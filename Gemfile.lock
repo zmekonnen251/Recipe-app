@@ -141,6 +141,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.16.2)
     msgpack (1.5.4)
     net-imap (0.2.3)
@@ -158,7 +159,12 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+<<<<<<< HEAD
     nokogiri (1.13.8-x64-mingw-ucrt)
+=======
+    nokogiri (1.13.8)
+      mini_portile2 (~> 2.8.0)
+>>>>>>> 2428374 (update lock file)
       racc (~> 1.4)
     nokogiri (1.13.8-x64-unknown)
       racc (~> 1.4)
@@ -281,8 +287,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2022.1)
-      tzinfo (>= 1.0.0)
     unicode-display_width (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -304,7 +308,11 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+<<<<<<< HEAD
   x64-mingw-ucrt
+=======
+  ruby
+>>>>>>> 2428374 (update lock file)
   x64-unknown
   x86_64-linux
 
