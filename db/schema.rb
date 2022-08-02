@@ -15,10 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_154039) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.string "measurement_unit"
-    t.float "price"
-    t.integer "quantity"
+    t.string "name", null: false
+    t.string "measurement_unit", default: "g", null: false
+    t.float "price", default: 0.0, null: false
+    t.integer "quantity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -37,11 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_154039) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.string "prepartion_time"
-    t.string "cooking_time"
-    t.string "description"
-    t.boolean "public"
+    t.string "name", null: false
+    t.float "preparation_time", default: 0.0, null: false
+    t.float "cooking_time", default: 0.0, null: false
+    t.string "description", null: false
+    t.boolean "public", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
