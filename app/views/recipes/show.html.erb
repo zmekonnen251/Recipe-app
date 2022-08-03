@@ -1,0 +1,58 @@
+<div class='d-flex flex-column px-5 gap-3 w-75 m-auto'>
+  <h1 class='text-center'><%= @recipe.name%></h1>
+  <div class='d-flex flex-row justify-content-between'>
+    <div class='d-flex flex-column gap-1'>
+      <p>Preparation time: 
+          <%if @recipe.preparation_time<1%>
+            <%=@recipe.preparation_time*60.to_i%>
+            <span>Minutes</span>
+          <% elsif @recipe.preparation_time==1 %>
+            <%=@recipe.preparation_time%>
+            <span> Hour</span>
+          <%else%>
+            <%=@recipe.preparation_time.to_s+" Hours"%>
+          <%end%>
+      </p>
+      <p>Cooking time: 
+          <%if @recipe.cooking_time<1%>
+            <%=@recipe.cooking_time*60.to_i%>
+            <span> Minutes</span>
+          <%else%>
+            <%=@recipe.cooking_time.to_s+" Hours"%>
+          <%end%>
+      </p>
+    </div>
+
+    <%= form_with model: @recipe, url: recipe_path(id:@recipe.id),method: :'put',class:"form-check form-switch" do |form| %> 
+      <%= form.check_box :public?,role: "switch",class: "form-check-input",onchange:'this.form.submit();'%>
+      <%= form.label :public ,class:"form-check-label "%>
+    <%end%>
+</div> 
+    
+  
+  
+  <div class='d-flex flex-row justify-content-between'>
+    <%= button_to 'Generate shoping list',recipe_destroy_path(id:@recipe.id),class:"btn btn-secondary"%>
+    <%= link_to 'Add Ingredient',new_recipe_recipe_food_path(recipe_id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+  </div>
+
+  <table class="table table-secondary table-hover table-striped">
+    <tr class="table-secondary">
+      <th class="table-secondary">Food</th>
+      <th class="table-secondary">Quantity</th>
+      <th class="table-secondary">Value</th>
+      <th class="table-secondary text-center">Actions</th>
+    </tr>
+  <tbody>
+    <tr class="table-secondary">
+      <td class="table-secondary">Food</td>
+      <td class="table-secondary">Quantity</td>
+      <td class="table-secondary">Value</th>
+      <td class="table-secondary d-flex flex-row gap-1 justify-content-center">
+        <%= button_to 'Modify',recipe_destroy_path(id:@recipe.id),class:"btn btn-secondary"%>
+        <%= button_to 'Remove',recipe_destroy_path(id:@recipe.id),class:"btn btn-secondary"%>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
