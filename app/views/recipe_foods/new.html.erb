@@ -1,0 +1,41 @@
+<div class="row d-flex justify-content-center">
+<h1 class='text-center'>New Ingredient</h1>
+
+<div class="w-50">
+<%= form_with model: @recipe_food, url: recipes_url,method: :'post' do |form| %>
+  <div class="col-md-12">
+    <% if @recipe_food.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@recipe_food.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+        <ul>
+          <% @recipe_food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+   <%= @foods.each do |food|%>
+    <div class="mb-3">
+      <%=form.label :@food.name,class: "form-label"%>
+      <%=form.check_box :food%>
+      <%=form.number_field :@recipe_food.quantity%>
+    </div>
+  <%end%>
+
+
+
+    
+     
+    <div>
+      <%= form.submit 'Save',class: "btn btn-secondary"%>
+    </div>
+  </div>
+
+  <div class='mb-3'>
+    <%= link_to "Back to recipe", recipe_path(id:params[:recipe_id]) %>
+  </div>
+<% end %>
+</div>
+
+</div>

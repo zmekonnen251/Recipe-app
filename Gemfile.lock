@@ -159,13 +159,10 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-<<<<<<< HEAD
-    nokogiri (1.13.8-x64-mingw-ucrt)
-=======
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
->>>>>>> 2428374 (update lock file)
       racc (~> 1.4)
+    nokogiri (1.13.8-x64-mingw-ucrt)
     nokogiri (1.13.8-x64-unknown)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
@@ -308,11 +305,8 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-<<<<<<< HEAD
-  x64-mingw-ucrt
-=======
   ruby
->>>>>>> 2428374 (update lock file)
+  x64-mingw-ucrt
   x64-unknown
   x86_64-linux
 
