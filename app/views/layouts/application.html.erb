@@ -10,12 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-
+  <body class='container p-4'>
+    <%= render 'shared/flashes' %>
     <%= render 'layouts/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,53 @@
+<div class="row d-flex justify-content-center">
+<h1 class='text-center'>New recipe</h1>
+
+<div class="w-50">
+<%= form_with model: @recipe, url: recipes_url,method: :'post' do |form| %>
+  <div class="col-md-12">
+    <% if @recipe.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+        <ul>
+          <% @recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mb-3">
+      <%= form.label :name ,class: "form-label"%>
+      <%= form.text_field :name, autofocus: true, autocomplete: "name",class:"form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :description,class: "form-label"%>
+      <%= form.text_area :description, autofocus: true, autocomplete: "description",class:"form-control" %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :preparation_time,class: "form-label"%>
+    <%= form.text_field :preparation_time, autofocus: true, autocomplete: "preparation_time" ,class:"form-control"%>
+  </div>
+
+    <div class="mb-3">
+      <%= form.label :cooking_time,class: "form-label" %>
+      <%= form.text_field :cooking_time, autofocus: true, autocomplete: "cooking_time",class:"form-control" %>
+    </div>
+    
+    <div class="mb-3 form-check">
+      <%= form.check_box :public ,class: "form-check-input"%>
+      <%= form.label :public ,class: "form-check-label"%>
+    </div>
+    <div>
+      <%= form.submit 'Create recipe',class: "btn btn-primary"%>
+    </div>
+  </div>
+
+  <div class='mb-3'>
+    <%= link_to "Back to recipes", recipes_path %>
+  </div>
+<% end %>
+</div>
+
+</div>

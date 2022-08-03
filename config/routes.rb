@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  devise_scope  :user do
-    get 'users/sign_out' => 'devise/sessions#destroy'
+  resources :recipes,only: %i[index show new create edit update ] do
+    resources :recipe_foods, only: %i[new create destroy edit update]
   end
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  # root to: "home#index"
-  
-  root "public_recipes#index"
 
   resources :foods, only: [:index, :create, :new, :destroy]
   resources :public_recipes, only: [:index]
+  
+  delete 'recipes/:id', to: 'recipes#destroy' , as: :recipe_destroy
+  put 'recipes/:id', to: 'recipes#update' , as: :recipe_update
+  
+  devise_scope  :user do
+    get 'users/sign_out' => 'devise/sessions#destroy'
+  end
+  
+  root "public_recipes#index"
 end

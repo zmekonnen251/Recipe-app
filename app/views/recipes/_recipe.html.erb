@@ -1,0 +1,9 @@
+<div id="<%= dom_id(recipe_data) %>" class='d-flex flex-row justify-content-between p-4 w-50 border border-secondary rounded-3 align-items-center mb-1'>
+  <div class='d-flex flex-column gap-3'>
+    <h2 class="text-center text-capitalize"><%=recipe_data.name%></h2>
+    <%= button_to 'Remove',recipe_destroy_path(id:recipe_data.id),method: :delete ,class:'btn btn-danger'%>
+  </div>
+
+
+  <p><%= recipe_data.description %></p>
+</div>
