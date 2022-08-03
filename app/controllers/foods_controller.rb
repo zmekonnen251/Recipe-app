@@ -16,8 +16,10 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    # @food.user_id = current_user.id
+    @food.user = current_user
     puts '#############################################'
+    @food.save
+    puts @food.errors.full_messages
     if @food.save
       flash[:success] = 'Food created succesffully.'
       redirect_to foods_path
