@@ -5,12 +5,16 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
-    @recipe_food.recipe = Recipe.find_by(id: params[:recipe_id])
-    @recipe_food.food = Food.find_by(id: params[:food_id])
-    if @recipe_food.save
+    @recipe = Recipe.find(params[:recipe_id].to_i)
+    @food = Food.find_by(id: params[:recipe_food][:food_id].to_i)
+    @quantity = params[:recipe_food][:quantity].to_i
+  
+    @new_recipe_food = RecipeFood.new(recipe:@recipe, food:@food, quantity:@quantity)
+    
+
+    if @new_recipe_food.save
       flash[:success] = 'RecipeFood created succesffully.'
-      redirect_to recipe_path(@recipe_food.recipe)
+      redirect_to recipe_path(@new_recipe_food.recipe)
     else
       render 'new'
     end
@@ -43,7 +47,7 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity, :food, :recipe)
+    params.require(:recipe_food).permit(:quantity, :food_id)
   end
 
   def set_recipe_food
