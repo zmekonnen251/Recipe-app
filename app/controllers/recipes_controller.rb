@@ -50,6 +50,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def shopping_list
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = RecipeFood.where(recipe_id: params[:id])
+    @total_items = @recipe_foods.count
+    @total_price = 0
+    @recipe_foods.each do |recipe_food|
+      @total_price += recipe_food.food.price * recipe_food.quantity
+    end
+  end
+
   private
 
   def recipe_params
