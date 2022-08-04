@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
   def update
     puts '#############################################3'
     @recipe = Recipe.find_by(id: params[:id])
-    
+
     if @recipe.update(recipe_params)
       puts @recipe.public?
       puts @recipe.update(recipe_params) ? 'Recipe updated succesffully.' : 'Recipe could not be updated.'
