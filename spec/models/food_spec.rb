@@ -1,9 +1,10 @@
 require 'rails_helper'
+# require 'spec_helper'
 
 RSpec.describe Food, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-  it { should belong_to(:user) }
-  it { should have_many(:recipe_foods) }
+  # pending "add some examples to (or delete) #{__FILE__}"
+  # it { should belong_to(:user) }
+  # it { should have_many(:recipe_foods) }
 
   describe '#name' do
     it 'should be present' do
