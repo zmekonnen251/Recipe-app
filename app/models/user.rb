@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { minimum: 3, maximum: 30 }
 
-  enum role: [:default, :admin]
+  enum role: %i[default admin]
 
   def is?(role)
     self.role == role.to_s

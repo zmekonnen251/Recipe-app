@@ -81,5 +81,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 end
 
-gem 'devise'
 gem 'cancancan', '~> 3.4'
+gem 'devise'

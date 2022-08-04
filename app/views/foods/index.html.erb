@@ -6,13 +6,13 @@
       <%= link_to 'New food', new_food_path, class: 'btn btn-secondary text-center' %>
     </div> 
 
-    <table class="table table-secondary table-hover table-striped" style='width:fit-content;'">
+    <table class="table table-secondary table-hover table-striped" style='background-color:#d7d8da'>
       <thead>
         <tr>
-          <th scope="col" class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Food</th>
-          <th scope="col" class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Measurement Unit</th>
-          <th scope="col" class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Price</th>
-          <th scope="col" class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Actions</th>
+          <th scope="col" class="table-secondary px-3 py-2">Food</th>
+          <th scope="col" class="table-secondary px-3 py-2">Measurement Unit</th>
+          <th scope="col" class="table-secondary px-3 py-2">Price</th>
+          <th scope="col" class="table-secondary px-3 py-2">Actions</th>
         </tr>
       </thead>
 
@@ -20,11 +20,11 @@
         <%# <% current_user.foods.each do |food| %> 
         <% @food.each do |food| %>
           <tr>
-            <td class="table-secondary" style='padding-left:4rem;padding-right:4rem'><%= food.name %></td>
-            <td class="table-secondary" style='padding-left:4rem;padding-right:4rem'><%= food.measurement_unit %></td>
-            <td class="table-secondary" style='padding-left:4rem;padding-right:4rem'><%= food.price %></td>
+            <td class="table-secondary px-3 py-2"><%= food.name %></td>
+            <td class="table-secondary px-3 py-2"><%= food.measurement_unit %></td>
+            <td class="table-secondary px-3 py-2"><%= food.price %></td>
             <%if can? :manage ,food%>
-              <td class="table-secondary" style='padding-left:4rem;padding-right:4rem'><%= button_to "Delete Food", food_path(food.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
+              <td class="table-secondary px-3 py-2"><%= button_to "Delete Food", food_path(food.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
             <%end%>
           </tr>
         <% end %>

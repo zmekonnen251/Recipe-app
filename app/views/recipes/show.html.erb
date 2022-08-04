@@ -38,23 +38,23 @@
     </div>
   <%end%>
 
-  <table class="table table-secondary table-hover table-striped" style='width:fit-content;'>
-    <tr class="table-secondary ">
-      <th class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Food</th>
-      <th class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Quantity</th>
-      <th class="table-secondary" style='padding-left:2rem;padding-right:2rem'>Price(per piece)</th>
+  <table class="table table-secondary table-hover table-striped">
+    <tr class="table-secondary px-5 py-2">
+      <th class="table-secondary px-5 py-2" >Food</th>
+      <th class="table-secondary px-5 py-2" >Quantity</th>
+      <th class="table-secondary px-5 py-2" >Price(per piece)</th>
       <%if can? :manage,@recipe%>
-      <th class="table-secondary text-center" style='padding-left:4.5rem;padding-right:5rem;'>Actions</th>
+      <th class="table-secondary text-center px-3 py-2" >Actions</th>
       <%end%>
     </tr>
   <tbody>
     <% @recipe_foods.each do |recipe_food|%>
       <tr>
-        <td class="table-secondary px-5"><%= recipe_food.food.name %></td>
-        <td class="table-secondary px-5"><%= recipe_food.quantity %></td>
-        <td class="table-secondary px-5"><%= recipe_food.food.price %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.name %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.quantity %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.price %></td>
         <%if can? :manage,@recipe%>
-        <td class="table-secondary d-flex flex-row gap-1 justify-content-center px-5">
+        <td class="table-secondary d-flex flex-row gap-1 justify-content-center px-3 py-2">
           <%= link_to 'Edit',edit_recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :get,class:"btn btn-secondary"%>
           <%= button_to 'Remove',recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :delete,class:"btn btn-secondary"%>
         </td>
