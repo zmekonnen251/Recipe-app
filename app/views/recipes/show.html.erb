@@ -44,15 +44,17 @@
       <th class="table-secondary text-center">Actions</th>
     </tr>
   <tbody>
-    <tr class="table-secondary">
-      <td class="table-secondary">Food</td>
-      <td class="table-secondary">Quantity</td>
-      <td class="table-secondary">Value</th>
-      <td class="table-secondary d-flex flex-row gap-1 justify-content-center">
-        <%= button_to 'Modify',recipe_destroy_path(id:@recipe.id),class:"btn btn-secondary"%>
-        <%= button_to 'Remove',recipe_destroy_path(id:@recipe.id),class:"btn btn-secondary"%>
-      </td>
-    </tr>
+    <% @recipe_foods.each do |recipe_food|%>
+      <tr>
+        <td class="table-secondary"><%= recipe_food.food.name %></td>
+        <td class="table-secondary"><%= recipe_food.quantity %></td>
+        <td class="table-secondary"><%= recipe_food.food.price %></td>
+        <td class="table-secondary d-flex flex-row gap-1 justify-content-center">
+          <%= link_to 'Edit',edit_recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :get,class:"btn btn-secondary"%>
+          <%= button_to 'Remove',recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :delete,class:"btn btn-secondary"%>
+        </td>
+      </tr>
+    <%end%>
   </tbody>
   </table>
 </div>
