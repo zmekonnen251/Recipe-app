@@ -22,37 +22,43 @@
           <%end%>
       </p>
     </div>
-
-    <%= form_with model: @recipe, url: recipe_path(id:@recipe.id),method: :'put',class:"form-check form-switch" do |form| %> 
-      <%= form.check_box :public?,role: "switch",class: "form-check-input",onchange:'this.form.submit();'%>
-      <%= form.label :public ,class:"form-check-label "%>
+    <%if can? :update,@recipe%>
+      <%= form_with model: @recipe, url: recipe_path(id:@recipe.id),method: :'put',class:"form-check form-switch" do |form| %> 
+        <%= form.check_box :public?,role: "switch",class: "form-check-input",onchange:'this.form.submit();'%>
+        <%= form.label :public ,class:"form-check-label "%>
+      <%end%>
     <%end%>
 </div> 
     
   
-  
-  <div class='d-flex flex-row justify-content-between'>
-    <%= link_to 'Generate shoping list',recipe_shopping_list_path(id:@recipe.id),method: :get,class:"btn btn-secondary"%>
-    <%= link_to 'Add Ingredient',new_recipe_recipe_food_path(recipe_id:@recipe.id),method: :get,class:"btn btn-secondary"%>
-  </div>
+  <%if can? :manage,@recipe%>
+    <div class='d-flex flex-row justify-content-between'>
+      <%= link_to 'Generate shoping list',recipe_shopping_list_path(id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+      <%= link_to 'Add Ingredient',new_recipe_recipe_food_path(recipe_id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+    </div>
+  <%end%>
 
-  <table class="table table-secondary table-hover table-striped">
-    <tr class="table-secondary">
-      <th class="table-secondary">Food</th>
-      <th class="table-secondary">Quantity</th>
-      <th class="table-secondary">Price (per piece)</th>
-      <th class="table-secondary text-center">Actions</th>
+  <table class="table table-secondary table-hover table-striped" style='width:fit-content;'>
+    <tr class="table-secondary ">
+      <th class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Food</th>
+      <th class="table-secondary" style='padding-left:4rem;padding-right:4rem'>Quantity</th>
+      <th class="table-secondary" style='padding-left:2rem;padding-right:2rem'>Price(per piece)</th>
+      <%if can? :manage,@recipe%>
+      <th class="table-secondary text-center" style='padding-left:4.5rem;padding-right:5rem;'>Actions</th>
+      <%end%>
     </tr>
   <tbody>
     <% @recipe_foods.each do |recipe_food|%>
       <tr>
-        <td class="table-secondary"><%= recipe_food.food.name %></td>
-        <td class="table-secondary"><%= recipe_food.quantity %></td>
-        <td class="table-secondary"><%= recipe_food.food.price %></td>
-        <td class="table-secondary d-flex flex-row gap-1 justify-content-center">
+        <td class="table-secondary px-5"><%= recipe_food.food.name %></td>
+        <td class="table-secondary px-5"><%= recipe_food.quantity %></td>
+        <td class="table-secondary px-5"><%= recipe_food.food.price %></td>
+        <%if can? :manage,@recipe%>
+        <td class="table-secondary d-flex flex-row gap-1 justify-content-center px-5">
           <%= link_to 'Edit',edit_recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :get,class:"btn btn-secondary"%>
           <%= button_to 'Remove',recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :delete,class:"btn btn-secondary"%>
         </td>
+        <%end%>
       </tr>
     <%end%>
   </tbody>
