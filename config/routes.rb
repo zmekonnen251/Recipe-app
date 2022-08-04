@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   delete 'recipes/:id', to: 'recipes#destroy' , as: :recipe_destroy
   put 'recipes/:id', to: 'recipes#update' , as: :recipe_update
+  get 'recipes/:id/shopping_list', to: 'recipes#shopping_list' , as: :recipe_shopping_list
   
   devise_scope  :user do
     get 'users/sign_out' => 'devise/sessions#destroy'

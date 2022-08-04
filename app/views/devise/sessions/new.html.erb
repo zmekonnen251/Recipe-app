@@ -1,26 +1,49 @@
-<h2>Log in</h2>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+   <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">Sign in</h3>
+            
+             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-outline mb-4">
+              
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control form-control-lg" %>
+                  <%= f.label :email,class: "form-label visually-hidden" %><br />
+                </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                <div class="form-outline mb-4">
+                  <%= f.password_field :password, autocomplete: true,class:"form-control form-control-lg" %>
+                  <%= f.label :password, class:"form-label visually-hidden"%><br />
+                </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                <% if devise_mapping.rememberable? %>
+                  <div class="form-check d-flex justify-content-start mb-4 gap-2">
+                    <%= f.check_box :remember_me,class:"form-check-input" %>
+                    <%= f.label :remember_password ,class:"form-check-label"%>
+                  </div>
+                <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                
+                <%= f.submit "Log in" ,class:"btn btn-primary btn-lg btn-block"%>
+          
+              <% end %>
+
+              <div class="form-outline mb-2 mt-2">
+                   <p class="mb-0">Don't you have account?
+              <span class="text-white-50 fw-bold"><%= render "devise/shared/links" %></span>
+                   
+              </p>
+              </div>
+             
+          </div>
+          
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</section>
 
-<%= render "devise/shared/links" %>
+
+
