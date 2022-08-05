@@ -1,0 +1,57 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+   <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5">Sign up</h3>
+            
+             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <div class="form-outline mb-4">
+                    <%= f.text_field :name, placeholder:'Name',autofocus: true, autocomplete: "name",class:"form-control form-control-lg" %>
+                    <%= f.label :name,class: "form-label visually-hidden" %>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%= f.email_field :email, placeholder:'Email', autofocus: true, autocomplete: "email",class:"form-control form-control-lg" %>
+                  <%= f.label :email,class: "form-label visually-hidden" %>
+                </div>
+
+                 <div class="form-outline mb-4">
+                    <%= f.label :password, class:"form-label visually-hidden" %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password,placeholder:'Password', autocomplete: "new-password",class:"form-control form-control-lg" %>
+                </div>
+
+                 <div class="form-outline mb-4">
+                    <%= f.label :password_confirmation ,class:"form-label visually-hidden"%>
+                    <%= f.password_field :password_confirmation,placeholder:'Confirm password', autocomplete: "new-password",class:"form-control form-control-lg" %>
+                </div>
+                <% if devise_mapping.rememberable? %>
+                  <div class="form-check d-flex justify-content-start mb-4 gap-2">
+                    <%= f.check_box :remember_me,class:"form-check-input" %>
+                    <%= f.label :remember_password ,class:"form-check-label"%>
+                  </div>
+                <% end %>
+
+                
+                <%= f.submit "Sign up" ,class:"btn btn-primary btn-lg btn-block"%>
+              
+              <% end %>
+
+              <div class="form-outline mb-2 mt-2">
+              <p class="mb-0">Do you have account?
+              <span class="text-white-50 fw-bold"><%= render "devise/shared/links" %></span>
+                   
+              </p>
+              </div>
+             
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

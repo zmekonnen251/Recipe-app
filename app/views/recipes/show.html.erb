@@ -1,0 +1,66 @@
+<div class='d-flex flex-column px-5 gap-3 w-75 m-auto'>
+  <h1 class='text-center'><%= @recipe.name%></h1>
+  <div class='d-flex flex-row justify-content-between'>
+    <div class='d-flex flex-column gap-1'>
+      <p>Preparation time: 
+          <%if @recipe.preparation_time<1%>
+            <%=@recipe.preparation_time*60.to_i%>
+            <span>Minutes</span>
+          <% elsif @recipe.preparation_time==1 %>
+            <%=@recipe.preparation_time%>
+            <span> Hour</span>
+          <%else%>
+            <%=@recipe.preparation_time.to_s+" Hours"%>
+          <%end%>
+      </p>
+      <p>Cooking time: 
+          <%if @recipe.cooking_time<1%>
+            <%=@recipe.cooking_time*60.to_i%>
+            <span> Minutes</span>
+          <%else%>
+            <%=@recipe.cooking_time.to_s+" Hours"%>
+          <%end%>
+      </p>
+    </div>
+    <%if can? :update,@recipe%>
+      <%= form_with model: @recipe, url: recipe_path(id:@recipe.id),method: :'put',class:"form-check form-switch" do |form| %> 
+        <%= form.check_box :public?,role: "switch",class: "form-check-input",onchange:'this.form.submit();'%>
+        <%= form.label :public ,class:"form-check-label "%>
+      <%end%>
+    <%end%>
+</div> 
+    
+  
+  <%if can? :manage,@recipe%>
+    <div class='d-flex flex-row justify-content-between'>
+      <%= link_to 'Generate shoping list',recipe_shopping_list_path(id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+      <%= link_to 'Add Ingredient',new_recipe_recipe_food_path(recipe_id:@recipe.id),method: :get,class:"btn btn-secondary"%>
+    </div>
+  <%end%>
+
+  <table class="table table-secondary table-hover table-striped">
+    <tr class="table-secondary px-5 py-2">
+      <th class="table-secondary px-5 py-2" >Food</th>
+      <th class="table-secondary px-5 py-2" >Quantity</th>
+      <th class="table-secondary px-5 py-2" >Price(per piece)</th>
+      <%if can? :manage,@recipe%>
+      <th class="table-secondary text-center px-3 py-2" >Actions</th>
+      <%end%>
+    </tr>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food|%>
+      <tr>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.name %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.quantity %></td>
+        <td class="table-secondary px-3 py-2"><%= recipe_food.food.price %></td>
+        <%if can? :manage,@recipe%>
+        <td class="table-secondary d-flex flex-row gap-1 justify-content-center px-3 py-2">
+          <%= link_to 'Edit',edit_recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :get,class:"btn btn-secondary"%>
+          <%= button_to 'Remove',recipe_recipe_food_path(recipe_id:@recipe.id,id:recipe_food.id),method: :delete,class:"btn btn-secondary"%>
+        </td>
+        <%end%>
+      </tr>
+    <%end%>
+  </tbody>
+  </table>
+</div>

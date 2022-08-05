@@ -1,0 +1,34 @@
+<h1 class='text-center text-success'> Foods </h1>
+<div class="container">
+  <div class = 'd-flex flex-column margin-auto justify-content-center'>
+    <div class='align-center p-5' > 
+      <%# <%= link_to 'New food', new_food_path(current_user.id), class: 'btn btn-primary text-center' %> 
+      <%= link_to 'New food', new_food_path, class: 'btn btn-secondary text-center' %>
+    </div> 
+
+    <table class="table table-secondary table-hover table-striped" style='background-color:#d7d8da'>
+      <thead>
+        <tr>
+          <th scope="col" class="table-secondary px-3 py-2">Food</th>
+          <th scope="col" class="table-secondary px-3 py-2">Measurement Unit</th>
+          <th scope="col" class="table-secondary px-3 py-2">Price</th>
+          <th scope="col" class="table-secondary px-3 py-2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%# <% current_user.foods.each do |food| %> 
+        <% @food.each do |food| %>
+          <tr>
+            <td class="table-secondary px-3 py-2"><%= food.name %></td>
+            <td class="table-secondary px-3 py-2"><%= food.measurement_unit %></td>
+            <td class="table-secondary px-3 py-2"><%= food.price %></td>
+            <%if can? :manage ,food%>
+              <td class="table-secondary px-3 py-2"><%= button_to "Delete Food", food_path(food.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
+            <%end%>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
