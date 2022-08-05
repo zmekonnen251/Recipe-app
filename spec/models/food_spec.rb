@@ -28,6 +28,5 @@ RSpec.describe Food, type: :model do
       food.user = nil
       expect(food).to_not be_valid
     end
-
   end
 end

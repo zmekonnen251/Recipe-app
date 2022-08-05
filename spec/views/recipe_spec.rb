@@ -11,7 +11,6 @@ RSpec.describe 'The recipes index page', type: :feature do
       @recipe2 = Recipe.create!(name: 'Test Recipe 2', description: 'test description 2', public: false,
                                 preparation_time: 10, cooking_time: 10,
                                 user_id: @user1.id)
-
     end
 
     it 'shows the title, description, preparation and cooking time' do

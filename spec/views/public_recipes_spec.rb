@@ -21,5 +21,4 @@ RSpec.describe 'The public recipes page', type: :feature do
     visit '/'
     expect(page).to_not have_content 'Delete'
   end
-
 end
