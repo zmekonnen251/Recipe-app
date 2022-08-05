@@ -1,16 +1,33 @@
 require 'rails_helper'
-# require 'spec_helper'
+require_relative '../support/device'
 
 RSpec.describe Food, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
-  # it { should belong_to(:user) }
-  # it { should have_many(:recipe_foods) }
+  describe 'validations' do
+    food = FactoryBot.build(:food)
 
-  describe '#name' do
-    it 'should be present' do
-      food = Food.new
-      food.valid?
-      expect(food.errors[:name]).to include("can't be blank")
+    it 'is valid with valid attributes' do
+      expect(food).to be_valid
     end
+
+    it 'is not not valid without a name' do
+      food.name = nil
+      expect(food).to_not be_valid
+    end
+
+    it 'is not valid without a price' do
+      food.price = nil
+      expect(food).to_not be_valid
+    end
+
+    it 'is not valid without a measurement_unit' do
+      food.measurement_unit = nil
+      expect(food).to_not be_valid
+    end
+
+    it 'is not valid without a user' do
+      food.user = nil
+      expect(food).to_not be_valid
+    end
+
   end
 end

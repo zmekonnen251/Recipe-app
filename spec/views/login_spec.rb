@@ -1,4 +1,4 @@
-require_relative '../rails_helper'
+require 'rails_helper'
 
 RSpec.describe 'The signing in process', type: :feature do
   describe 'login page' do
@@ -9,23 +9,17 @@ RSpec.describe 'The signing in process', type: :feature do
       expect(page).to have_button('Log in')
     end
 
-    it 'button click throws error when no username and password are entered' do
-      visit('/users/sign_in')
-      click_button('Log in')
-      expect(page).to have_content('Invalid Email or password.')
-    end
-
     describe 'after filling in input fields' do
       before :each do
         User.create!(name: 'test', email: 'test@testmail.com', password: '123456')
       end
 
-      it 'throws an error if wrong username or password given' do
+      it 'it will redirect to sign in page if a wrong email/email password given' do
         visit '/users/sign_in'
         fill_in 'Email', with: 'test@test.com'
         fill_in 'Password', with: 'Test'
         click_on 'Log in'
-        expect(page).to have_content('Invalid Email or password.')
+        expect(page.current_path).to eq('/users/sign_in')
       end
 
       it 'signs me in successfully' do

@@ -28,8 +28,6 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find_by(id: params[:id])
-    puts '#############################################3'
-    puts @recipe.name
     if @recipe.destroy
       flash[:success] = 'Recipe deleted.'
     else
@@ -39,12 +37,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    puts '#############################################3'
     @recipe = Recipe.find_by(id: params[:id])
 
     if @recipe.update(recipe_params)
-      puts @recipe.public?
-      puts @recipe.update(recipe_params) ? 'Recipe updated succesffully.' : 'Recipe could not be updated.'
       flash[:success] = 'Recipe updated succesffully.'
       redirect_to recipe_path
     else
