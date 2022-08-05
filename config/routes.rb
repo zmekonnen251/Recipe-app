@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get 'users/profile', to: 'users#show', as: :user_profile 
+
   resources :recipes,only: %i[index show new create edit update ] do
     resources :recipe_foods, only: %i[new create destroy edit update]
   end
