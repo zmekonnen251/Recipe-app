@@ -1,23 +1,62 @@
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Recipe-app
+# Ruby on Rails -  Recipe-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> The Recipe app keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
-Things you may want to cover:
+## Live demo
+[Live demo](https://devcenter.heroku.com/articles/upgrading-to-the-latest-stack)
 
-* Ruby version
+## Built With
 
-* System dependencies
+- **Ruby**
+- **Rails**
+- **Postgresql**
+- **BootStrap 5**
 
-* Configuration
+## Methodology used 
+- TDD via RSPEC
 
-* Database creation
+## Getting Started
+To get a local copy up and running follow these simple example steps.
 
-* Database initialization
 
-* How to run the test suite
+## Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+- You need Ruby v3+, Rails v7+ and Postgresql installed on your machine.
 
-* Deployment instructions
+## Setup
+
+- Clone the project `https://github.com/zmekonnen251/Recipe-app.git`
+- navigate to the folder `cd Recipe-app`
+- Install required gems `bundle i`
+
+## Usage
+- start the server `rails s`
+
+- Enjoy interacting with the app.
+
+## Authors
+
+👤 **Zelalem Mekonnen**
+
+- GitHub: [@zelalem251](https://github.com/zmekonnen251)
+- Twitter: [@mek_zela](https://twitter.com/mek_zela)
+- LinkedIn: [Zelalem G. Mekonnen](https://www.linkedin.com/in/zelalem-getachew/)
+
+👤 **Oybek Kayumov**
+
+- GitHub: [@OybekKayumov](https://github.com/OybekKayumov)
+- Twitter: [@KayumovOybek](https://twitter.com/KayumovOybek)
+- LinkedIn: [Oybek Kayumov](https://www.linkedin.com/in/oybek-kayumov/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/OybekKayumov/blog-app/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
