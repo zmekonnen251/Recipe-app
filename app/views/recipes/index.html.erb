@@ -2,14 +2,14 @@
 
 <div id="recipes" class='d-flex flex-column'>
   <% @recipes.each do |recipe| %>
-  <div class='mb-3'>
-  <%= render partial:'recipe',locals:{recipe_data:recipe} %>
+  <div class='mb-3 d-flex flex-column align-items-center'>
+    <%= render partial:'recipe',locals:{recipe_data:recipe} %>
 
       
- <div class='mt-2 px-5'>
-    <%= link_to "Show this recipe", recipe_url(id:recipe.id) ,method: :get,style:'margin-left:9rem;',class:'btn btn-success p-1'%>
-    <%= link_to "New recipe", new_recipe_path ,class:'btn btn-success p-1 '%>
-  </div>
+    <div class='mt-2 px-5 ml-5 align-self-start'>
+      <%= link_to "Show this recipe", recipe_url(id:recipe.id) ,method: :get,style:'margin-left:11rem;',class:'btn btn-success p-1'%>
+      <%= link_to "New recipe", new_recipe_path ,class:'btn btn-success p-1 '%>
+    </div>
   </div>
     
   <% end %>
